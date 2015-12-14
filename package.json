@@ -1,0 +1,46 @@
+{
+  "name": "configurable-gulp-recipe-each",
+  "version": "0.1.0",
+  "description": "Configurable gulp recipe plugin that iterates each values and pass to sub tasks",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amobiz/configurable-gulp-recipe-each.git"
+  },
+  "keywords": [
+    "configurable-gulp-recipe",
+    "configurable-gulp-recipes",
+    "stream",
+    "data driven",
+    "data-driven",
+    "each",
+    "iterate",
+    "iterator",
+    "plugin",
+    "plugins",
+    "recipe",
+    "recipes",
+    "configurable",
+    "configuration",
+    "configurations"
+  ],
+  "author": "Amobiz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/amobiz/configurable-gulp-recipe-each/issues"
+  },
+  "homepage": "https://github.com/amobiz/configurable-gulp-recipe-each#readme",
+  "devDependencies": {
+    "mocha": "^2.3.4",
+    "mocha-cases": "^0.1.4"
+  },
+  "dependencies": {
+    "configurable-gulp-helper": "git+https://github.com/amobiz/configurable-gulp-helper.git",
+    "configurable-gulp-recipe-merge": "git+https://github.com/amobiz/configurable-gulp-recipe-merge.git",
+    "gulp-util": "^3.0.7",
+    "merge-stream": "^1.0.0"
+  }
+}

@@ -1,8 +1,5 @@
 'use strict';
 
-/*jshint node: true */
-/*global process*/
-
 /**
  * Recipe:
  * 	Stream Array (from gulp.js cheatsheet p.2)
@@ -17,9 +14,9 @@
 function each(done) {
 	// lazy loading required modules.
 	var mergeStream = require('merge-stream'),
-		merge = require('configurable-gulp-recipe-merge');
+		merge = require('gulp-ccr-merge');
 
-	var verify = require('configurable-gulp-helper').verifyConfiguration,
+	var verify = require('gulp-ccr-helper').verifyConfiguration,
 		PluginError = require('gulp-util').PluginError;
 
 	var context = this,

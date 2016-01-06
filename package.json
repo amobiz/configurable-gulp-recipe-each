@@ -8,20 +8,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gulp-ccr/gulp-ccr-each.git"
+    "url": "git+https://github.com/gulp-cookery/gulp-ccr-each.git"
   },
   "keywords": [
     "gulp",
     "gulp 4.0",
+	"gulp-cookery",
+	"gulp-chef",
     "gulp-ccr",
     "configurable-gulp-recipe",
     "configurable-gulp-recipes",
     "stream",
     "data driven",
     "data-driven",
+	"cookery",
     "each",
     "iterate",
     "iterator",
+	"cookery",
     "plugin",
     "plugins",
     "recipe",
@@ -33,16 +37,19 @@
   "author": "Amobiz",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/gulp-ccr/gulp-ccr-each/issues"
+    "url": "https://github.com/gulp-cookery/gulp-ccr-each/issues"
   },
-  "homepage": "https://github.com/gulp-ccr/gulp-ccr-each#readme",
+  "homepage": "https://github.com/gulp-cookery/gulp-ccr-each#readme",
+  "peerDependencies": {
+    "gulp-chef": "git+https://github.com/gulp-cookery/gulp-chef.git"
+  },
   "devDependencies": {
     "mocha": "^2.3.4",
     "mocha-cases": "^0.1.4"
   },
   "dependencies": {
-    "gulp-ccr-helper": "git+https://github.com/gulp-ccr/gulp-ccr-helper.git",
-    "gulp-ccr-merge": "git+https://github.com/gulp-ccr/gulp-ccr-merge.git",
+    "gulp-ccr-helper": "git+https://github.com/gulp-cookery/gulp-ccr-helper.git",
+    "gulp-ccr-merge": "git+https://github.com/gulp-cookery/gulp-ccr-merge.git",
     "gulp-util": "^3.0.7",
     "merge-stream": "^1.0.0"
   }

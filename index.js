@@ -12,15 +12,17 @@
  *
  */
 function each(done) {
+	var streams;
+
 	// lazy loading required modules.
-	var mergeStream = require('merge-stream'),
-		merge = require('gulp-ccr-merge');
+	var mergeStream = require('merge-stream');
+	var merge = require('gulp-ccr-merge');
 
-	var verify = require('gulp-ccr-helper').verifyConfiguration,
-		PluginError = require('gulp-util').PluginError;
+	var verify = require('gulp-ccr-helper').verifyConfiguration;
+	var PluginError = require('gulp-util').PluginError;
 
-	var context = this,
-		config = context.config;
+	var context = this;
+	var config = context.config;
 
 	if (context.upstream) {
 		throw new PluginError('each', 'each stream-processor do not accept up-stream');
@@ -31,7 +33,7 @@ function each(done) {
 		return processValue(config.values[0]);
 	}
 
-	var streams = config.values.map(processValue);
+	streams = config.values.map(processValue);
 	return mergeStream(streams);
 
 	function processValue(value) {

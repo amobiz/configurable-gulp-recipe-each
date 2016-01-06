@@ -1,7 +1,7 @@
 {
   "name": "gulp-ccr-each",
   "version": "0.1.0",
-  "description": "Configurable gulp recipe plugin that iterates each values and pass to sub tasks.",
+  "description": "Cascading Configurable Gulp Recipe for gulp-chef that iterates each values and pass to sub tasks.",
   "main": "index.js",
   "scripts": {
     "test": "mocha"

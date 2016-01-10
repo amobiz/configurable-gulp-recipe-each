@@ -1,2 +1,2 @@
 # gulp-ccr-each
-Cascading Configurable Gulp Recipe for gulp-chef that iterates each values and pass to sub tasks.
+Iterates each values and pass to child tasks. A cascading configurable Gulp recipe for gulp-chef.

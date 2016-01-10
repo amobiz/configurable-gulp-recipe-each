@@ -7,13 +7,8 @@
  * Ingredients:
  * 	merge-stream
  *
- * @config 針對本 task 的 configuration。
- * @tasks 傳入的子 tasks 為 configurableTask，是尚未綁定 config 的 task 形式。
- *
  */
-function each(done) {
-	var streams;
-
+function each() {
 	// lazy loading required modules.
 	var mergeStream = require('merge-stream');
 	var merge = require('gulp-ccr-merge');
@@ -21,10 +16,13 @@ function each(done) {
 	var verify = require('gulp-ccr-helper').verifyConfiguration;
 	var PluginError = require('gulp-util').PluginError;
 
-	var context = this;
-	var config = context.config;
+	var gulp = this.gulp;
+	var config = this.config;
+	var upstream = this.upstream;
 
-	if (context.upstream) {
+	var streams;
+
+	if (this.upstream) {
 		throw new PluginError('each', 'each stream-processor do not accept up-stream');
 	}
 	verify(each.schema, config);
@@ -37,24 +35,34 @@ function each(done) {
 	return mergeStream(streams);
 
 	function processValue(value) {
-		context.config = value;
+		var context;
+
+		context = {
+			gulp: gulp,
+			config: value,
+			upstream: upstream
+		};
 		return merge.call(context, done);
+	}
+
+	function done() {
+		throw new PluginError('each', 'child task should return stream, not call callback.');
 	}
 }
 
 each.expose = [];
 
 each.schema = {
-	"title": "each",
-	"description": "",
-	"properties": {
-		"values": {
-			"description": "",
-			"type": "array",
-			"minItems": 1
+	title: 'each',
+	description: 'Iterates each values and pass as `config` to child tasks.',
+	properties: {
+		values: {
+			description: 'Values to iterate.',
+			type: 'array',
+			minItems: 1
 		}
 	},
-	"required": ["values"]
+	required: ['values']
 };
 
 each.type = 'stream';

@@ -1,5 +1,7 @@
 'use strict';
 
+var helper = require('gulp-ccr-stream-helper')('each');
+
 /**
  * Recipe:
  * 	Stream Array (from gulp.js cheatsheet p.2)
@@ -12,20 +14,17 @@ function each() {
 	// lazy loading required modules.
 	var mergeStream = require('merge-stream');
 	var merge = require('gulp-ccr-merge');
-
-	var verify = require('gulp-ccr-helper').verifyConfiguration;
-	var PluginError = require('gulp-util').PluginError;
+	var verify = require('gulp-ccr-config-helper');
 
 	var gulp = this.gulp;
 	var config = this.config;
+	var tasks = this.tasks;
 	var upstream = this.upstream;
 
 	var streams;
 
-	if (this.upstream) {
-		throw new PluginError('each', 'each stream-processor do not accept up-stream');
-	}
 	verify(each.schema, config);
+	helper.prerequisite(this, false, 1);
 
 	if (config.values.length === 1) {
 		return processValue(config.values[0]);
@@ -40,13 +39,10 @@ function each() {
 		context = {
 			gulp: gulp,
 			config: value,
+			tasks: tasks,
 			upstream: upstream
 		};
-		return merge.call(context, done);
-	}
-
-	function done() {
-		throw new PluginError('each', 'child task should return stream, not call callback.');
+		return helper.runTask(context, merge);
 	}
 }
 

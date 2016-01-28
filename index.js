@@ -2,14 +2,22 @@
 
 var helper = require('gulp-ccr-stream-helper')('each');
 
-/**
- * Recipe:
- * 	Stream Array (from gulp.js cheatsheet p.2)
- *
- * Ingredients:
- * 	merge-stream
- *
- */
+var schema = {
+	title: 'each',
+	description: "Iterates each values and pass as 'config' context to sub tasks.",
+	properties: {
+		values: {
+			description: 'An array of values to iterate.',
+			type: 'array',
+			minItems: 1,
+			items: {
+				type: 'object'
+			}
+		}
+	},
+	required: ['values']
+};
+
 function each() {
 	// lazy loading required modules.
 	var mergeStream = require('merge-stream');
@@ -38,7 +46,7 @@ function each() {
 
 		context = {
 			gulp: gulp,
-			config: value,
+			config: Object.assign({}, config, value),
 			tasks: tasks,
 			upstream: upstream
 		};
@@ -46,21 +54,6 @@ function each() {
 	}
 }
 
-each.expose = [];
-
-each.schema = {
-	title: 'each',
-	description: 'Iterates each values and pass as `config` to child tasks.',
-	properties: {
-		values: {
-			description: 'Values to iterate.',
-			type: 'array',
-			minItems: 1
-		}
-	},
-	required: ['values']
-};
-
-each.type = 'stream';
-
 module.exports = each;
+module.exports.schema = schema;
+module.exports.type = 'stream';

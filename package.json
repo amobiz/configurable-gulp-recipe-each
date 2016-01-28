@@ -1,7 +1,7 @@
 {
   "name": "gulp-ccr-each",
   "version": "0.1.0",
-  "description": "Iterates each values and pass to child tasks. A cascading configurable Gulp recipe for gulp-chef.",
+  "description": "Iterates each values and pass to sub tasks. A cascading configurable gulp recipe for gulp-chef.",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
@@ -41,16 +41,16 @@
   },
   "homepage": "https://github.com/gulp-cookery/gulp-ccr-each#readme",
   "peerDependencies": {
-    "gulp-chef": "git+https://github.com/gulp-cookery/gulp-chef.git"
+    "gulp-chef": "^0.1.0"
   },
   "devDependencies": {
     "mocha": "^2.3.4",
     "mocha-cases": "^0.1.4"
   },
   "dependencies": {
-    "gulp-ccr-config-helper": "git+https://github.com/gulp-cookery/gulp-ccr-config-helper.git",
-    "gulp-ccr-stream-helper": "git+https://github.com/gulp-cookery/gulp-ccr-stream-helper.git",
-    "gulp-ccr-merge": "git+https://github.com/gulp-cookery/gulp-ccr-merge.git",
+    "gulp-ccr-config-helper": "^0.1.0",
+    "gulp-ccr-stream-helper": "^0.1.0",
+    "gulp-ccr-merge": "^0.1.0",
     "merge-stream": "^1.0.0"
   }
 }
